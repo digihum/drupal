@@ -19,4 +19,6 @@ RUN curl -fSL "https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.ta
 	&& echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c - \
 	&& tar -xz --strip-components=1 -f drupal.tar.gz \
 	&& rm drupal.tar.gz \
+	&& rm sites
+	&& ln -s /host-sites sites
 	&& chown -R www-data:www-data sites
